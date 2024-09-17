@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/petro-app/static/css/main.80ed5264.css",
-    "main.js": "/petro-app/static/js/main.36c0f650.js",
+    "main.js": "/petro-app/static/js/main.92c10769.js",
     "static/js/453.1be9f7fb.chunk.js": "/petro-app/static/js/453.1be9f7fb.chunk.js",
     "index.html": "/petro-app/index.html",
     "main.80ed5264.css.map": "/petro-app/static/css/main.80ed5264.css.map",
-    "main.36c0f650.js.map": "/petro-app/static/js/main.36c0f650.js.map",
+    "main.92c10769.js.map": "/petro-app/static/js/main.92c10769.js.map",
     "453.1be9f7fb.chunk.js.map": "/petro-app/static/js/453.1be9f7fb.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.80ed5264.css",
-    "static/js/main.36c0f650.js"
+    "static/js/main.92c10769.js"
   ]
 }
