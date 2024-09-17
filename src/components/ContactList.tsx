@@ -11,15 +11,30 @@ const ContactList: React.FC = () => {
   useEffect(() => {
     const fetchContacts = async () => {
       try {
-        const response = await fetch("/data/Petro Professionals.xlsx");
+        const response = await fetch(
+          `${process.env.PUBLIC_URL}/data/data.xlsx`
+        );
+        if (!response.ok) {
+          throw new Error(`Failed to fetch file: ${response.statusText}`);
+        }
+
         const fileBlob = await response.blob();
+
+        // Validate file type using a more robust method (if necessary)
+        // const fileType = await fileType.fromBuffer(fileBlob);
+        // if (fileType.mime !== "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet") {
+        //   throw new Error("File is not an Excel file");
+        // }
+
         const contactsData = await readExcelFile(fileBlob);
         setContacts(contactsData);
         setFilteredContacts(contactsData);
       } catch (error) {
         console.error("Error loading contacts:", error);
+        // Handle error gracefully (e.g., display a message to the user)
       }
     };
+
     fetchContacts();
   }, []);
 
@@ -82,7 +97,7 @@ const ContactList: React.FC = () => {
                         onClick={() => setSelectedContact(contact)}
                       >
                         <img
-                          src="/user-icon.png"
+                          src={`${process.env.PUBLIC_URL}/user-icon.png`}
                           alt="User Icon"
                           className="user-icon"
                         />

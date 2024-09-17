@@ -12,28 +12,43 @@ export interface Contact {
 export const readExcelFile = async (file: Blob): Promise<Contact[]> => {
     return new Promise((resolve, reject) => {
         const reader = new FileReader();
+
         reader.onload = (e: ProgressEvent<FileReader>) => {
-            const data = new Uint8Array(e.target?.result as ArrayBuffer);
-            const workbook = XLSX.read(data, { type: 'array' });
-            const sheetName = workbook.SheetNames[0];  // Get the first sheet
-            const sheet = workbook.Sheets[sheetName];
+            try {
+                const data = e.target?.result as ArrayBuffer;
+                const workbook = XLSX.read(data, { type: 'array' });
+                const sheetName = workbook.SheetNames[0];  // Get the first sheet
+                const sheet = workbook.Sheets[sheetName];
 
-            // Convert the sheet to JSON format
-            const jsonData: any[] = XLSX.utils.sheet_to_json(sheet);
+                if (!sheet) {
+                    throw new Error('Sheet not found');
+                }
 
-            // Map the data to match the Contact interface
-            const contacts: Contact[] = jsonData.map(row => ({
-                Name: row['Name'],                // Full name of the contact
-                Designation: row['Designation'],  // Job title
-                JoiningDate: row['Joining Date'], // Date of joining
-                Mobile: row['Mobile'],            // Phone number
-                Company: row['Company'],          // Company name
-                Cadre: row['Cadre']               // Job cadre (optional)
-            }));
+                // Convert the sheet to JSON format
+                const jsonData: any[] = XLSX.utils.sheet_to_json(sheet);
 
-            resolve(contacts);
+                // Map the data to match the Contact interface
+                const contacts: Contact[] = jsonData.map(row => ({
+                    Name: row['Name'],                // Full name of the contact
+                    Designation: row['Designation'],  // Job title
+                    JoiningDate: row['Joining Date'], // Date of joining
+                    Mobile: row['Mobile'],            // Phone number
+                    Company: row['Company'],          // Company name
+                    Cadre: row['Cadre']               // Job cadre (optional)
+                }));
+
+                resolve(contacts);
+            } catch (error) {
+                console.error('Error processing the file:', error);
+                reject(error);
+            }
         };
-        reader.onerror = (err) => reject(err);
+
+        reader.onerror = (err) => {
+            console.error('FileReader error:', err);
+            reject(err);
+        };
+
         reader.readAsArrayBuffer(file);
     });
 };
