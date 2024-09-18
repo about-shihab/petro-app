@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/petro/static/css/main.80ed5264.css",
-    "main.js": "/petro/static/js/main.0d66202a.js",
-    "static/js/453.1be9f7fb.chunk.js": "/petro/static/js/453.1be9f7fb.chunk.js",
-    "index.html": "/petro/index.html",
-    "main.80ed5264.css.map": "/petro/static/css/main.80ed5264.css.map",
-    "main.0d66202a.js.map": "/petro/static/js/main.0d66202a.js.map",
-    "453.1be9f7fb.chunk.js.map": "/petro/static/js/453.1be9f7fb.chunk.js.map"
+    "main.css": "/petro-app/static/css/main.80ed5264.css",
+    "main.js": "/petro-app/static/js/main.92c10769.js",
+    "static/js/453.1be9f7fb.chunk.js": "/petro-app/static/js/453.1be9f7fb.chunk.js",
+    "index.html": "/petro-app/index.html",
+    "main.80ed5264.css.map": "/petro-app/static/css/main.80ed5264.css.map",
+    "main.92c10769.js.map": "/petro-app/static/js/main.92c10769.js.map",
+    "453.1be9f7fb.chunk.js.map": "/petro-app/static/js/453.1be9f7fb.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.80ed5264.css",
-    "static/js/main.0d66202a.js"
+    "static/js/main.92c10769.js"
   ]
 }
